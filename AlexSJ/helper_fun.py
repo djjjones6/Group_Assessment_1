@@ -1,6 +1,6 @@
 import math
 from sklearn.metrics import confusion_matrix
-
+import numpy as np
 
 def balanced_MCC_macro_avg(y_true, y_pred):
     C = confusion_matrix(y_true, y_pred)
@@ -22,4 +22,4 @@ def balanced_MCC_macro_avg(y_true, y_pred):
         spec = TN / (TN + FP)
         x = (sens + spec - 1)/(math.sqrt(1-(sens-spec)**2))
         bal_MCC_each_class.append(x)
-    return math.mean(bal_MCC_each_class)
+    return np.mean(bal_MCC_each_class)
